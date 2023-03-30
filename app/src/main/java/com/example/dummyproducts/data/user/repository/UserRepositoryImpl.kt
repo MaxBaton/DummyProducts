@@ -6,8 +6,9 @@ import com.example.dummyproducts.domain.user.models.User
 import com.example.dummyproducts.domain.user.repository.UserRepository
 
 class UserRepositoryImpl(private val userStorage: UserStorage): UserRepository {
-    override fun getUser(): User {
-        return mapUserDataToDomain(userData = userStorage.getUser())
+    override suspend fun getUser(userName: String, password: String): User? {
+        val userData = userStorage.getUser()
+        return userData?.let { mapUserDataToDomain(userData = it) }
     }
 
     private fun mapUserDataToDomain(userData: UserData): User {

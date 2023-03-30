@@ -3,5 +3,8 @@ package com.example.dummyproducts.data.user.storage
 import com.example.dummyproducts.data.user.storage.models.UserData
 
 interface UserStorage {
-    fun getUser(): UserData
+    suspend fun getUser(
+        userName: String = "",
+        password: String = ""
+    ): UserData?
 }

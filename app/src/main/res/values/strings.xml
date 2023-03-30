@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DummyProducts</string>
+    <string name="username">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="login_in">Войти</string>
+
+<!--    Toasts-->
+    <string name="toast_empty_field">Введите значение!</string>
 </resources>

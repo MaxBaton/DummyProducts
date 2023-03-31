@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import com.example.dummyproducts.databinding.DialogWaitBinding
 
-fun Context.createWaitAlertDialog(title: String, message: String) {
+fun Context.createWaitAlertDialog(title: String, message: String): AlertDialog {
     return with(AlertDialog.Builder(this)) {
         val binding = DialogWaitBinding.inflate(LayoutInflater.from(this@createWaitAlertDialog))
         binding.textViewMessage.text = message

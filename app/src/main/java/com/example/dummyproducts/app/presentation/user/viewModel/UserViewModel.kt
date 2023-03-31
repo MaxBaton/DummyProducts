@@ -2,7 +2,6 @@ package com.example.dummyproducts.app.presentation.user.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.dummyproducts.domain.user.models.User
 import com.example.dummyproducts.domain.user.usecase.GetUser
 import com.example.dummyproducts.domain.user.usecase.LoginUser
@@ -26,7 +25,7 @@ class UserViewModel(
 
     fun login(userName: String, password: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val user = loginUser.getLastUser(
+            val user = loginUser.login(
                 userName = userName,
                 password = password
             )

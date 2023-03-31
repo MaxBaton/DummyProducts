@@ -9,11 +9,15 @@ import kotlinx.coroutines.launch
 
 class UserNetworkStorage(private val userApi: UserApi): UserStorage {
     override suspend fun getUser(userName: String, password: String): UserData? {
-        val authRequest = AuthRequest(
-            username = userName,
-            password = password
-        )
-        val user = userApi.auth(authRequest)
-        return user
+        try {
+            val authRequest = AuthRequest(
+                username = userName,
+                password = password
+            )
+            val user = userApi.auth(authRequest)
+            return user
+        }catch (e: Exception) {
+            return null
+        }
     }
 }

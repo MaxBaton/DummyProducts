@@ -6,4 +6,8 @@
 
 <!--    Toasts-->
     <string name="toast_empty_field">Введите значение!</string>
+
+<!--    Dialogs-->
+    <string name="dialog_login_title">Авторизация</string>
+    <string name="dialog_login_message">Подождите, идет процесс авторизации...</string>
 </resources>

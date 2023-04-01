@@ -33,14 +33,14 @@
         app:layout_constraintTop_toBottomOf="@id/guide_line_center"
         app:layout_constraintStart_toStartOf="@id/guide_line_left"
         app:layout_constraintEnd_toEndOf="@id/guide_line_right"
-        app:endIconMode="clear_text" >
+        app:endIconMode="password_toggle" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/password"
-            android:inputType="text"/>
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline

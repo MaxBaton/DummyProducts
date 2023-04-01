@@ -23,13 +23,21 @@ class UserViewModel(
         }
     }
 
-    fun login(userName: String, password: String) {
+    fun login(userName: String, password: String, onSuccessLogin: () -> Unit, onErrorLogin: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             val user = loginUser.login(
                 userName = userName,
                 password = password
             )
-            user?.let { mutableLiveDataUser.value = it }
+            CoroutineScope(Dispatchers.Main).launch {
+                user?.let { mutableLiveDataUser.value = it }
+
+                if (user != null) {
+                    onSuccessLogin()
+                } else {
+                    onErrorLogin()
+                }
+            }
         }
     }
 }

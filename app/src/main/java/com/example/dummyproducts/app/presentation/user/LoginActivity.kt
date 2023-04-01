@@ -45,7 +45,16 @@ class LoginActivity : AppCompatActivity() {
 
                         userViewModel.login(
                             userName = username.trim(),
-                            password = password.trim()
+                            password = password.trim(),
+                            onSuccessLogin = {
+                                waitDialog.dismiss()
+                                // Сохраняем пользователя в БД
+                                this@LoginActivity.showShortToast(text = "Успешная авторизация")
+                            },
+                            onErrorLogin = {
+                                waitDialog.dismiss()
+                                this@LoginActivity.showShortToast(text = "Ошибка авторизации")
+                            }
                         )
                     }else {
                         this@LoginActivity.showShortToast(text = getString(R.string.toast_empty_field))

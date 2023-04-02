@@ -7,4 +7,6 @@ interface UserRepository {
         userName: String = "",
         password: String = ""
     ): User?
+
+    suspend fun saveUser(user: User): Boolean
 }

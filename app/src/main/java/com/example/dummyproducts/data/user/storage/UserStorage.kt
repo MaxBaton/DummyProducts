@@ -7,4 +7,6 @@ interface UserStorage {
         userName: String = "",
         password: String = ""
     ): UserData?
+
+    suspend fun saveUser(userData: UserData): Boolean
 }

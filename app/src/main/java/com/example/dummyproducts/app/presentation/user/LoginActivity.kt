@@ -24,9 +24,15 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        userViewModel.getLastUser()
+        userViewModel.getLastUser(
+            onSuccessGet = {
+
+            },
+            onErrorGet = {
+                setContentView(binding.root)
+            }
+        )
 
         userViewModel.liveDataUser.observe(this) { user ->
             supportFragmentManager.beginTransaction()
@@ -48,12 +54,17 @@ class LoginActivity : AppCompatActivity() {
                             password = password.trim(),
                             onSuccessLogin = {
                                 waitDialog.dismiss()
+                                this@LoginActivity.showShortToast(text = getString(R.string.toast_successful_login))
                                 // Сохраняем пользователя в БД
-                                this@LoginActivity.showShortToast(text = "Успешная авторизация")
+                                userViewModel.saveUser(
+                                    user = userViewModel.liveDataUser.value,
+                                    onSuccessSave = {},
+                                    onErrorSave = {}
+                                )
                             },
                             onErrorLogin = {
                                 waitDialog.dismiss()
-                                this@LoginActivity.showShortToast(text = "Ошибка авторизации")
+                                this@LoginActivity.showShortToast(text = getString(R.string.toast_error_login))
                             }
                         )
                     }else {

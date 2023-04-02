@@ -20,4 +20,8 @@ class UserNetworkStorage(private val userApi: UserApi): UserStorage {
             return null
         }
     }
+
+    override suspend fun saveUser(userData: UserData): Boolean {
+        TODO("Not yet implemented")
+    }
 }

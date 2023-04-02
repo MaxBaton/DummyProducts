@@ -6,6 +6,8 @@
 
 <!--    Toasts-->
     <string name="toast_empty_field">Введите значение!</string>
+    <string name="toast_successful_login">Успешная авторизация!</string>
+    <string name="toast_error_login">Ошибка авторизации!</string>
 
 <!--    Dialogs-->
     <string name="dialog_login_title">Авторизация</string>

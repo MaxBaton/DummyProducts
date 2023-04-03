@@ -4,6 +4,9 @@
     <string name="password">Пароль</string>
     <string name="login_in">Войти</string>
 
+<!--    Menu-->
+    <string name="menu_item_all_products">Все продукты</string>
+
 <!--    Toasts-->
     <string name="toast_empty_field">Введите значение!</string>
     <string name="toast_successful_login">Успешная авторизация!</string>

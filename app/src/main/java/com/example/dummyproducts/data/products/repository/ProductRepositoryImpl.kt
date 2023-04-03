@@ -10,7 +10,7 @@ class ProductRepositoryImpl(private val productStorage: ProductStorage): Product
     override suspend fun getAllProducts(): List<Product> {
         val productsData = productStorage.getAllProducts()
         val productsDomain = mutableListOf<Product>()
-        productsData.forEach {
+        productsData?.forEach {
             val productDomain = it.mapToProductDomain()
             productsDomain.add(productDomain)
         }

@@ -1,4 +1,4 @@
-package com.example.dummyproducts.app.presentation.products
+package com.example.dummyproducts.app.presentation.products.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,11 +15,16 @@ class ProductViewModel(
     private val mutableProductsLiveData = MutableLiveData<List<Product>>()
     val productsLiveData = mutableProductsLiveData
 
-    fun getAllProducts(onSuccess: () -> Unit) {
+    fun getAllProducts(onSuccess: () -> Unit, onError: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             val products = getProducts.getAllProducts()
             CoroutineScope(Dispatchers.Main).launch {
-                mutableProductsLiveData.value = products
+                products?.let { mutableProductsLiveData.value = it }
+                if (products != null && products.isNotEmpty()) {
+                    onSuccess()
+                }else {
+                    onError()
+                }
             }
         }
     }

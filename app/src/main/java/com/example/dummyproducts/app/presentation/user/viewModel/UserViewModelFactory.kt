@@ -3,7 +3,7 @@ package com.example.dummyproducts.app.presentation.user.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.dummyproducts.data.database.products.AppDatabase
+import com.example.dummyproducts.data.database.AppDatabase
 import com.example.dummyproducts.data.retrofit.AppRetrofit
 import com.example.dummyproducts.data.user.repository.UserRepositoryImpl
 import com.example.dummyproducts.data.user.retrofit.api.UserApi

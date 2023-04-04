@@ -35,7 +35,7 @@ class ProductViewModel(
             val products = getUserProducts.get()
             CoroutineScope(Dispatchers.Main).launch {
                 products?.let { mutableProductsLiveData.value = it }
-                if (products != null && products.isNotEmpty()) {
+                if (products != null) {
                     onSuccess()
                 }else {
                     onError()

@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.dummyproducts.R
 import com.example.dummyproducts.app.presentation.products.AllProductsFragment
+import com.example.dummyproducts.app.presentation.products.UserProductsFragment
 import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModel
 import com.example.dummyproducts.databinding.FragmentUserAccountBinding
 
@@ -51,6 +52,12 @@ class UserAccountFragment: Fragment() {
                 requireActivity().supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
                     .add(android.R.id.content, AllProductsFragment())
+                    .commit()
+            }
+            R.id.action_user_products -> {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .add(android.R.id.content, UserProductsFragment())
                     .commit()
             }
         }

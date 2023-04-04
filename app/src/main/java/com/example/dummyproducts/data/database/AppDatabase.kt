@@ -1,9 +1,12 @@
 package com.example.dummyproducts.data.database
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.dummyproducts.data.database.products.ProductDao
 import com.example.dummyproducts.data.database.user.UserDao
 import com.example.dummyproducts.data.products.storage.models.ProductData
@@ -12,7 +15,7 @@ import com.example.dummyproducts.data.user.storage.models.UserData
 @Database(
     entities = [UserData::class, ProductData::class],
     version = 2,
-    exportSchema = false
+    exportSchema = true
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
@@ -30,12 +33,33 @@ abstract class AppDatabase: RoomDatabase() {
                             context,
                             AppDatabase::class.java,
                             DB_NAME
-                        ).build()
+                        )
+                            .addMigrations(MIGRATION_1_2)
+                            .build()
                     }
                 }
             }
 
             return INSTANCE!!
+        }
+
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "create table ProductData (" +
+                        "brand VARCHAR(20) not null," +
+                        "category VARCHAR(20) not null," +
+                        "description VARCHAR(255) not null," +
+                        "discountPercentage REAL(2) not null," +
+                        "id INT primary key not null," +
+                        "images VARCHAR(255) not null," +
+                        "price INT not null," +
+                        "rating REAL(2) not null," +
+                        "stock INT not null," +
+                        "thumbnail VARCHAR(255) not null," +
+                        "title VARCHAR(32) not null" +
+                        ")")
+            }
         }
     }
 }

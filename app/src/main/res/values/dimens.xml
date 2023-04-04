@@ -7,4 +7,7 @@
     <dimen name="fragment_user_account_margin_top">15dp</dimen>
     <dimen name="fragment_user_account_text_size">30sp</dimen>
 
+    <dimen name="product_all_fragment_margin_start_top_thumbnail">5dp</dimen>
+    <dimen name="product_all_fragment_text_size">20sp</dimen>
+
 </resources>

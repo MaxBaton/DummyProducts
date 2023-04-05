@@ -24,4 +24,8 @@ class UserNetworkStorage(private val userApi: UserApi): UserStorage {
     override suspend fun saveUser(userData: UserData): Boolean {
         TODO("Not yet implemented")
     }
+
+    override suspend fun deleteUser(userData: UserData): Boolean {
+        TODO("Not yet implemented")
+    }
 }

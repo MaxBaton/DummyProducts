@@ -16,4 +16,13 @@ class UserDbStorage(private val userDao: UserDao): UserStorage {
             false
         }
     }
+
+    override suspend fun deleteUser(userData: UserData): Boolean {
+        return try {
+            userDao.deleteUser(userData = userData)
+            true
+        }catch (e: Exception) {
+            false
+        }
+    }
 }

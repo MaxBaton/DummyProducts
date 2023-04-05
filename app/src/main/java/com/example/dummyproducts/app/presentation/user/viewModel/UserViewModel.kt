@@ -3,6 +3,7 @@ package com.example.dummyproducts.app.presentation.user.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.dummyproducts.domain.user.models.User
+import com.example.dummyproducts.domain.user.usecase.DeleteUser
 import com.example.dummyproducts.domain.user.usecase.GetUser
 import com.example.dummyproducts.domain.user.usecase.LoginUser
 import com.example.dummyproducts.domain.user.usecase.SaveUser
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 class UserViewModel(
     private val getUser: GetUser,
     private val loginUser: LoginUser,
-    private val saveUser: SaveUser
+    private val saveUser: SaveUser,
+    private val deleteUser: DeleteUser
 ): ViewModel() {
     private var mutableLiveDataUser = MutableLiveData<User>()
     val liveDataUser = mutableLiveDataUser
@@ -58,6 +60,26 @@ class UserViewModel(
                     onSuccessSave()
                 }else {
                     onErrorSave()
+                }
+            }
+        }
+    }
+
+    fun deleteUser(onSuccess: () -> Unit, onError: () -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val user = liveDataUser.value
+            if (user == null) {
+                CoroutineScope(Dispatchers.Main).launch {
+                    onError()
+                }
+            }else {
+                val isDelete = deleteUser.delete(user = user)
+                CoroutineScope(Dispatchers.Main).launch {
+                    if (isDelete) {
+                        onSuccess()
+                    }else {
+                        onError()
+                    }
                 }
             }
         }

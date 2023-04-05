@@ -9,6 +9,7 @@ import com.example.dummyproducts.data.user.repository.UserRepositoryImpl
 import com.example.dummyproducts.data.user.retrofit.api.UserApi
 import com.example.dummyproducts.data.user.storage.UserDbStorage
 import com.example.dummyproducts.data.user.storage.UserNetworkStorage
+import com.example.dummyproducts.domain.user.usecase.DeleteUser
 import com.example.dummyproducts.domain.user.usecase.GetUser
 import com.example.dummyproducts.domain.user.usecase.LoginUser
 import com.example.dummyproducts.domain.user.usecase.SaveUser
@@ -27,12 +28,15 @@ class UserViewModelFactory(context: Context): ViewModelProvider.Factory {
     private val loginUser by lazy { LoginUser(userRepository =  userRepositoryNetwork) }
     // SaveUser
     private val saveUser by lazy { SaveUser(userRepository = userRepositoryDB) }
+    // DeleteUser
+    private val deleteUser by lazy { DeleteUser(userRepository = userRepositoryDB) }
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return UserViewModel(
             getUser = getUser,
             loginUser = loginUser,
-            saveUser = saveUser
+            saveUser = saveUser,
+            deleteUser = deleteUser
         ) as T
     }
 }

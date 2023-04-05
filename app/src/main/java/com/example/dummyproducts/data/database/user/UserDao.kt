@@ -1,9 +1,6 @@
 package com.example.dummyproducts.data.database.user
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.dummyproducts.data.user.storage.models.UserData
 
 @Dao
@@ -13,4 +10,7 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveUser(userData: UserData)
+
+    @Delete
+    fun deleteUser(userData: UserData)
 }

@@ -16,4 +16,8 @@ class UserRepositoryImpl(private val userStorage: UserStorage): UserRepository {
     override suspend fun saveUser(user: User): Boolean {
         return userStorage.saveUser(userData = user.mapToUserData())
     }
+
+    override suspend fun deleteUser(user: User): Boolean {
+        return userStorage.deleteUser(userData = user.mapToUserData())
+    }
 }

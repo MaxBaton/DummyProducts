@@ -9,4 +9,6 @@ interface UserStorage {
     ): UserData?
 
     suspend fun saveUser(userData: UserData): Boolean
+
+    suspend fun deleteUser(userData: UserData): Boolean
 }

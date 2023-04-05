@@ -9,4 +9,6 @@ interface UserRepository {
     ): User?
 
     suspend fun saveUser(user: User): Boolean
+
+    suspend fun deleteUser(user: User): Boolean
 }

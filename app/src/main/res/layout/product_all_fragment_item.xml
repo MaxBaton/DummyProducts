@@ -11,10 +11,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/product_all_fragment_margin_start_top_thumbnail"
-        android:layout_marginStart="@dimen/product_all_fragment_margin_start_top_thumbnail"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         android:layout_marginBottom="@dimen/product_all_fragment_margin_start_top_thumbnail"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guide_line_check_box"
         app:layout_constraintEnd_toStartOf="@id/guide_line_thumbnail"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -23,7 +24,8 @@
         android:id="@+id/text_view_title"
         style="@style/TextViewProductItem"
         tools:text="Iphone 9"
-        app:layout_constraintTop_toTopOf="@id/image_view_thumbnail"
+        android:layout_marginBottom="@dimen/product_all_fragment_margin_start_top_thumbnail"
+        app:layout_constraintBottom_toTopOf="@id/text_view_price"
         app:layout_constraintStart_toEndOf="@id/guide_line_thumbnail"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -32,7 +34,8 @@
         style="@style/TextViewProductItem"
         tools:text="500$"
         android:layout_marginTop="@dimen/product_all_fragment_margin_start_top_thumbnail"
-        app:layout_constraintTop_toBottomOf="@id/text_view_title"
+        app:layout_constraintTop_toTopOf="@id/check_box_is_in_user_list"
+        app:layout_constraintBottom_toBottomOf="@id/check_box_is_in_user_list"
         app:layout_constraintStart_toEndOf="@id/guide_line_thumbnail"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -50,5 +53,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <CheckBox
+        android:id="@+id/check_box_is_in_user_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="CheckBox"
+        android:layout_marginStart="@dimen/product_all_fragment_margin_start_top_thumbnail"
+        app:layout_constraintTop_toTopOf="@id/image_view_thumbnail"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_thumbnail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guide_line_check_box"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

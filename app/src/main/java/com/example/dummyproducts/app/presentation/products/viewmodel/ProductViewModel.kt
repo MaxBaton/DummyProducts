@@ -15,6 +15,7 @@ class ProductViewModel(
     private val getAllProducts: GetAllProducts,
     private val getUserProducts: GetUserProducts
 ): ViewModel() {
+    // Product
     private val mutableProductsLiveData = MutableLiveData<List<Product>>()
     val productsLiveData = mutableProductsLiveData
     // ProductWithCheck

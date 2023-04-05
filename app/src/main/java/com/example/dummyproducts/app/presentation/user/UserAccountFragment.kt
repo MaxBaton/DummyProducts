@@ -60,6 +60,9 @@ class UserAccountFragment: Fragment() {
                     .add(android.R.id.content, UserProductsFragment())
                     .commit()
             }
+            R.id.action_exit_account -> {
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }

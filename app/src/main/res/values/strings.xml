@@ -7,6 +7,7 @@
 <!--    Menu-->
     <string name="menu_item_all_products">Все продукты</string>
     <string name="menu_item_user_products">Мои продукты</string>
+    <string name="menu_item_exit_account">Выход</string>
 
 <!--    Toasts-->
     <string name="toast_empty_field">Введите значение!</string>

@@ -4,7 +4,7 @@
     <style name="TextViewProductItem">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/product_all_fragment_text_size</item>
+        <item name="android:textSize">@dimen/product_all_item_text_size</item>
         <item name="android:textAlignment">center</item>
     </style>
 

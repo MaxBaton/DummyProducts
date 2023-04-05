@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,8 +12,9 @@ import com.bumptech.glide.Glide
 import com.example.dummyproducts.R
 import com.example.dummyproducts.app.presentation.products.viewmodel.ProductViewModel
 import com.example.dummyproducts.databinding.FragmentAllProductsBinding
-import com.example.dummyproducts.databinding.ProductAllFragmentItemBinding
+import com.example.dummyproducts.databinding.ProductAllItemBinding
 import com.example.dummyproducts.domain.products.models.ProductWithCheck
+import com.example.dummyproducts.domain.products.usecase.GetPriceStr
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem
@@ -34,7 +34,7 @@ class AllProductsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding ?: return) {
-            productViewModel.getAllProducts(
+            productViewModel.getProductsWithCheck(
                 onSuccess = {
                     progressBar.visibility = View.GONE
                 },
@@ -69,12 +69,12 @@ class AllProductsFragment: Fragment() {
         binding = null
     }
 
-    inner class ProductItem(private val productWithCheck: ProductWithCheck): BindableItem<ProductAllFragmentItemBinding>() {
-        override fun bind(viewBinding: ProductAllFragmentItemBinding, position: Int) {
+    inner class ProductItem(private val productWithCheck: ProductWithCheck): BindableItem<ProductAllItemBinding>() {
+        override fun bind(viewBinding: ProductAllItemBinding, position: Int) {
             with(viewBinding) {
                 checkBoxIsInUserList.isChecked = productWithCheck.isInUserList
                 textViewTitle.text = productWithCheck.product.title
-                textViewPrice.text = productWithCheck.product.price.toString()
+                textViewPrice.text = GetPriceStr(price = productWithCheck.product.price).get()
                 textViewRating.text = productWithCheck.product.rating.toString()
 
                 Glide
@@ -84,9 +84,9 @@ class AllProductsFragment: Fragment() {
             }
         }
 
-        override fun getLayout() = R.layout.product_all_fragment_item
+        override fun getLayout() = R.layout.product_all_item
 
-        override fun initializeViewBinding(view: View) = ProductAllFragmentItemBinding.bind(view)
+        override fun initializeViewBinding(view: View) = ProductAllItemBinding.bind(view)
 
     }
 }

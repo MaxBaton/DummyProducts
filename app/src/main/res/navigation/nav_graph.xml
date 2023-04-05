@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.dummyproducts.app.presentation.user.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_userAccountFragment"
+            app:destination="@id/userAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userAccountFragment"
+        android:name="com.example.dummyproducts.app.presentation.user.UserAccountFragment"
+        android:label="@string/title_user_account"
+        tools:layout="@layout/fragment_user_account">
+        <action
+            android:id="@+id/action_userAccountFragment_to_userProductsFragment"
+            app:destination="@id/userProductsFragment" />
+        <action
+            android:id="@+id/action_userAccountFragment_to_allProductsFragment"
+            app:destination="@id/allProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allProductsFragment"
+        android:name="com.example.dummyproducts.app.presentation.products.AllProductsFragment"
+        android:label="@string/title_all_products"
+        tools:layout="@layout/fragment_all_products"/>
+    <fragment
+        android:id="@+id/userProductsFragment"
+        android:name="com.example.dummyproducts.app.presentation.products.UserProductsFragment"
+        android:label="@string/title_user_products"
+        tools:layout="@layout/fragment_user_products"/>
+</navigation>

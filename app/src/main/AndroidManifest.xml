@@ -14,7 +14,7 @@
         android:theme="@style/Theme.DummyProducts"
         tools:targetApi="31">
         <activity
-            android:name=".app.presentation.user.LoginActivity"
+            android:name=".app.presentation.common.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

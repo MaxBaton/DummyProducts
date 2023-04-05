@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.dummyproducts.R
-import com.example.dummyproducts.app.presentation.products.AllProductsFragment
-import com.example.dummyproducts.app.presentation.products.UserProductsFragment
 import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModel
 import com.example.dummyproducts.databinding.FragmentUserAccountBinding
 
@@ -49,19 +48,13 @@ class UserAccountFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.action_all_products -> {
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .addToBackStack(null)
-                    .add(android.R.id.content, AllProductsFragment())
-                    .commit()
+                findNavController().navigate(R.id.action_userAccountFragment_to_allProductsFragment)
             }
             R.id.action_user_products -> {
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .addToBackStack(null)
-                    .add(android.R.id.content, UserProductsFragment())
-                    .commit()
+                findNavController().navigate(R.id.action_userAccountFragment_to_userProductsFragment)
             }
             R.id.action_exit_account -> {
-
+                findNavController().popBackStack(R.id.loginFragment, false)
             }
         }
         return super.onOptionsItemSelected(item)

@@ -17,4 +17,10 @@
 <!--    Dialogs-->
     <string name="dialog_login_title">Авторизация</string>
     <string name="dialog_login_message">Подождите, идет процесс авторизации...</string>
+
+<!--    Titles-->
+    <string name="title_login">Авторизация</string>
+    <string name="title_user_account">Аккаунт</string>
+    <string name="title_user_products">Мои продукты</string>
+    <string name="title_all_products">Все продукты</string>
 </resources>

@@ -36,13 +36,17 @@ class LoginFragment: Fragment() {
         with(binding ?: return) {
             userViewModel.getLastUser(
                 onSuccessGet = {
-                    val user = userViewModel.liveDataUser.value
-                    user?.let { findNavController().navigate(R.id.action_loginFragment_to_userAccountFragment) }
+//                    val user = userViewModel.liveDataUser.value
+//                    user?.let { findNavController().navigate(R.id.action_loginFragment_to_userAccountFragment) }
                 },
                 onErrorGet = {
 //                    setContentView(binding.root)
                 }
             )
+
+            userViewModel.liveDataUser.observe(requireActivity()) { user ->
+                user?.let { findNavController().navigate(R.id.action_loginFragment_to_userAccountFragment) }
+            }
 
             btnLogin.setOnClickListener {
                 val username = etUsername.text.toString()

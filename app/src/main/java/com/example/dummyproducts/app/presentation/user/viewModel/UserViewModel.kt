@@ -76,6 +76,7 @@ class UserViewModel(
                 val isDelete = deleteUser.delete(user = user)
                 CoroutineScope(Dispatchers.Main).launch {
                     if (isDelete) {
+                        liveDataUser.value = null
                         onSuccess()
                     }else {
                         onError()

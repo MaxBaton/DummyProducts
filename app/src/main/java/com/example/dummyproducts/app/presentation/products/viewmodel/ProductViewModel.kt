@@ -9,6 +9,7 @@ import com.example.dummyproducts.domain.products.usecase.GetProductsWithCheck
 import com.example.dummyproducts.domain.products.usecase.GetUserProducts
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class ProductViewModel(
@@ -52,8 +53,10 @@ class ProductViewModel(
 
     fun getProductsWithCheck(onSuccess: () -> Unit, onError: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
-            val allProducts = getAllProducts.get()
-            val userProducts = getUserProducts.get()
+            val allProductsAsync = async { getAllProducts.get() }
+            val userProductsAsync = async { getUserProducts.get() }
+            val allProducts = allProductsAsync.await()
+            val userProducts = userProductsAsync.await()
 
             CoroutineScope(Dispatchers.Main).launch {
                 if (allProducts == null || userProducts == null) {

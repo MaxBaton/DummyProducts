@@ -35,14 +35,16 @@ class UserAccountFragment: Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         with(binding ?: return) {
-            userViewModel.liveDataUser.observe(requireActivity()) { user ->
-                textViewFirstname.text = user.firstName
-                textViewLastname.text = user.lastName
+            userViewModel.liveDataUser.observe(viewLifecycleOwner) { it ->
+                it?.let { user ->
+                    textViewFirstname.text = user.firstName
+                    textViewLastname.text = user.lastName
 
-                Glide
-                    .with(requireContext())
-                    .load(user.image)
-                    .into(imageViewAvatar)
+                    Glide
+                        .with(requireContext())
+                        .load(user.image)
+                        .into(imageViewAvatar)
+                }
             }
         }
     }

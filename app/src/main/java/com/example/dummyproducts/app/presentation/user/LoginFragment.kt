@@ -44,7 +44,7 @@ class LoginFragment: Fragment() {
                 }
             )
 
-            userViewModel.liveDataUser.observe(requireActivity()) { user ->
+            userViewModel.liveDataUser.observe(viewLifecycleOwner) { user ->
                 user?.let { findNavController().navigate(R.id.action_loginFragment_to_userAccountFragment) }
             }
 

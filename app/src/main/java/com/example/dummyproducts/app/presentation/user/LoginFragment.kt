@@ -12,12 +12,11 @@ import com.example.dummyproducts.R
 import com.example.dummyproducts.app.presentation.common.createWaitAlertDialog
 import com.example.dummyproducts.app.presentation.common.showShortToast
 import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModel
-import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModelFactory
 import com.example.dummyproducts.databinding.FragmentLoginBinding
 
 class LoginFragment: Fragment() {
     private var binding: FragmentLoginBinding? = null
-    private val userViewModel: UserViewModel by activityViewModels { UserViewModelFactory(context = requireContext().applicationContext) }
+    private val userViewModel: UserViewModel by activityViewModels()
     private val waitDialog: AlertDialog by lazy {
         requireActivity().createWaitAlertDialog(
             title = getString(R.string.dialog_login_title),

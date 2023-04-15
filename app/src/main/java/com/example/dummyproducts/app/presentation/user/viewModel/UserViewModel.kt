@@ -7,11 +7,14 @@ import com.example.dummyproducts.domain.user.usecase.DeleteUser
 import com.example.dummyproducts.domain.user.usecase.GetUser
 import com.example.dummyproducts.domain.user.usecase.LoginUser
 import com.example.dummyproducts.domain.user.usecase.SaveUser
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UserViewModel(
+@HiltViewModel
+class UserViewModel @Inject constructor(
     private val getUser: GetUser,
     private val loginUser: LoginUser,
     private val saveUser: SaveUser,

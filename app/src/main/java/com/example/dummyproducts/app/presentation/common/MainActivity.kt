@@ -1,20 +1,14 @@
 package com.example.dummyproducts.app.presentation.common
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
-import androidx.navigation.Navigation
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dummyproducts.R
-import com.example.dummyproducts.app.presentation.products.viewmodel.ProductViewModel
-import com.example.dummyproducts.app.presentation.products.viewmodel.ProductViewModelFactory
-import com.example.dummyproducts.app.presentation.user.UserAccountFragment
-import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModel
-import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModelFactory
 import com.example.dummyproducts.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val controller by lazy { findNavController(viewId = R.id.fragment_container_view) }

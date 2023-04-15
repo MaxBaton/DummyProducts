@@ -8,16 +8,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.dummyproducts.R
-import com.example.dummyproducts.app.presentation.user.logicData.Constants
 import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModel
-import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModelFactory
 import com.example.dummyproducts.databinding.FragmentUserAccountBinding
-import com.xwray.groupie.GroupieAdapter
-import com.xwray.groupie.Section
 
 class UserAccountFragment: Fragment() {
     private var binding: FragmentUserAccountBinding? = null
-    private val userViewModel: UserViewModel by activityViewModels { UserViewModelFactory(context = requireContext().applicationContext) }
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

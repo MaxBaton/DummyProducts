@@ -7,12 +7,15 @@ import com.example.dummyproducts.domain.products.models.ProductWithCheck
 import com.example.dummyproducts.domain.products.usecase.GetAllProducts
 import com.example.dummyproducts.domain.products.usecase.GetProductsWithCheck
 import com.example.dummyproducts.domain.products.usecase.GetUserProducts
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductViewModel(
+@HiltViewModel
+class ProductViewModel @Inject constructor(
     private val getAllProducts: GetAllProducts,
     private val getUserProducts: GetUserProducts
 ): ViewModel() {

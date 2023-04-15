@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.dummyproducts.R
 import com.example.dummyproducts.app.presentation.products.viewmodel.ProductViewModel
-import com.example.dummyproducts.app.presentation.products.viewmodel.ProductViewModelFactory
 import com.example.dummyproducts.databinding.FragmentUserProductsBinding
 import com.example.dummyproducts.databinding.ProductUserItemBinding
 import com.example.dummyproducts.domain.products.models.Product
@@ -22,7 +21,7 @@ import com.xwray.groupie.viewbinding.BindableItem
 
 class UserProductsFragment: Fragment() {
     private var binding: FragmentUserProductsBinding? = null
-    private val productViewModel: ProductViewModel by activityViewModels { ProductViewModelFactory(context = requireContext().applicationContext) }
+    private val productViewModel: ProductViewModel by activityViewModels()
     // For Recycler
     private val groupieAdapter = GroupieAdapter()
     private val section = Section()

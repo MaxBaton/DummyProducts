@@ -24,4 +24,14 @@ class ProductRepositoryImpl(private val productStorage: ProductStorage): Product
             false
         }
     }
+
+    override suspend fun deleteProducts(products: List<Product>): Boolean {
+        return try {
+            val productsData = products.mapToListProductData()
+            productStorage.deleteProducts(productsData = productsData)
+            true
+        }catch (e: Exception) {
+            false
+        }
+    }
 }

@@ -1,9 +1,6 @@
 package com.example.dummyproducts.data.database.products
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.dummyproducts.data.products.storage.models.ProductData
 
 @Dao
@@ -13,4 +10,7 @@ interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addProduct(productData: ProductData)
+
+    @Delete
+    fun deleteProduct(productData: ProductData)
 }

@@ -6,4 +6,6 @@ interface ProductStorage {
     suspend fun getProducts(): List<ProductData>?
 
     suspend fun addProducts(productsData: List<ProductData>): Boolean
+
+    suspend fun deleteProducts(productsData: List<ProductData>): Boolean
 }

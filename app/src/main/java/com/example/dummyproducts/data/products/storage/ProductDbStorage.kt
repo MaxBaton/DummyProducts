@@ -20,4 +20,15 @@ class ProductDbStorage(private val productDao: ProductDao): ProductStorage {
         }
     }
 
+    override suspend fun deleteProducts(productsData: List<ProductData>): Boolean {
+        return try {
+            productsData.forEach {
+                productDao.deleteProduct(productData = it)
+            }
+            true
+        }catch (e: Exception) {
+            false
+        }
+    }
+
 }

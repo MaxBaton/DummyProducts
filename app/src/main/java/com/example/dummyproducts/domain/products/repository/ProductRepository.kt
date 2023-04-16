@@ -6,4 +6,6 @@ interface ProductRepository {
     suspend fun getProducts(): List<Product>?
 
     suspend fun addProducts(products: List<Product>): Boolean
+
+    suspend fun deleteProducts(products: List<Product>): Boolean
 }

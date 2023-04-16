@@ -2,6 +2,7 @@ package com.example.dummyproducts.app.di.products
 
 import com.example.dummyproducts.domain.products.repository.ProductRepository
 import com.example.dummyproducts.domain.products.usecase.AddProducts
+import com.example.dummyproducts.domain.products.usecase.DeleteProducts
 import com.example.dummyproducts.domain.products.usecase.GetAllProducts
 import com.example.dummyproducts.domain.products.usecase.GetUserProducts
 import dagger.Module
@@ -34,5 +35,13 @@ class DomainProductModule {
         productRepository: ProductRepository
     ): AddProducts {
         return AddProducts(productRepository = productRepository)
+    }
+
+    @Provides
+    fun provideDeleteProducts(
+        @ProductDbRepository
+        productRepository: ProductRepository
+    ): DeleteProducts {
+        return DeleteProducts(productRepository = productRepository)
     }
 }

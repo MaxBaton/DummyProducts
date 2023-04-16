@@ -16,4 +16,8 @@ class ProductNetworkStorage(private val productApi: ProductApi): ProductStorage 
     override suspend fun addProducts(productsData: List<ProductData>): Boolean {
         TODO("Not yet implemented")
     }
+
+    override suspend fun deleteProducts(productsData: List<ProductData>): Boolean {
+        TODO("Not yet implemented")
+    }
 }

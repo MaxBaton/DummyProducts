@@ -91,3 +91,13 @@ fun List<ProductData>.mapToListProductDomain(): List<Product> {
     }
     return listDomain
 }
+
+fun List<Product>.mapToListProductData(): List<ProductData> {
+    val listData = mutableListOf<ProductData>()
+    this.forEach { productDomain ->
+        val productData = productDomain.mapToProductData()
+        listData.add(productData)
+    }
+
+    return listData
+}

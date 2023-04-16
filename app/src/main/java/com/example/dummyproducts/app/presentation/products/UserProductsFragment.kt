@@ -45,10 +45,12 @@ class UserProductsFragment: Fragment() {
                 }
             )
 
-            productViewModel.productsLiveData.observe(requireActivity()) { products ->
+            productViewModel.productsUserLiveData.observe(viewLifecycleOwner) { products ->
+                val productsItem = mutableListOf<ProductUserItem>()
                 products.forEach {
-                    section.add(ProductUserItem(product = it))
+                    productsItem.add(ProductUserItem(product = it))
                 }
+                section.update(productsItem)
             }
 
             section.apply {

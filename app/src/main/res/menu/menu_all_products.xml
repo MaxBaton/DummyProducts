@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <item-->
+<!--        android:id="@+id/action_del_mode"-->
+<!--        android:title="Удалить"-->
+<!--        android:icon="@drawable/icon_del"-->
+<!--        app:showAsAction="ifRoom"-->
+<!--        />-->
+
+    <item
+        android:id="@+id/action_add_mode"
+        android:title="Добавить"
+        android:icon="@drawable/icon_add"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_cancel"
+        android:title="Отмена"
+        android:icon="@drawable/icon_cancel"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_confirm"
+        android:title="Подтвердить"
+        android:icon="@drawable/icon_confirm"
+        app:showAsAction="ifRoom"
+        />
+</menu>

@@ -9,4 +9,15 @@ class ProductDbStorage(private val productDao: ProductDao): ProductStorage {
         return productDao.getAllUserProducts()
     }
 
+    override suspend fun addProducts(productsData: List<ProductData>): Boolean {
+        return try {
+            productsData.forEach {
+                productDao.addProduct(productData = it)
+            }
+            true
+        }catch (e: Exception) {
+            false
+        }
+    }
+
 }

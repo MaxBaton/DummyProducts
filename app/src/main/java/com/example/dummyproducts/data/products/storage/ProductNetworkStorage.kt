@@ -12,4 +12,8 @@ class ProductNetworkStorage(private val productApi: ProductApi): ProductStorage 
             null
         }
     }
+
+    override suspend fun addProducts(productsData: List<ProductData>): Boolean {
+        TODO("Not yet implemented")
+    }
 }

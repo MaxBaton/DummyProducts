@@ -5,7 +5,7 @@ import com.example.dummyproducts.data.products.storage.ProductStorage
 import com.example.dummyproducts.data.products.storage.models.ProductData
 
 class ProductDbStorage(private val productDao: ProductDao): ProductStorage {
-    override suspend fun getProducts(): List<ProductData>? {
+    override suspend fun getProducts(token: String): List<ProductData>? {
         return productDao.getAllUserProducts()
     }
 

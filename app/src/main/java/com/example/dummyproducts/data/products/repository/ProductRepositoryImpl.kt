@@ -8,8 +8,8 @@ import com.example.dummyproducts.domain.products.models.Product
 import com.example.dummyproducts.domain.products.repository.ProductRepository
 
 class ProductRepositoryImpl(private val productStorage: ProductStorage): ProductRepository {
-    override suspend fun getProducts(): List<Product> {
-        val productsData = productStorage.getProducts()
+    override suspend fun getProducts(token: String): List<Product> {
+        val productsData = productStorage.getProducts(token = token)
         val productsDomain = productsData?.mapToListProductDomain()
 
         return productsDomain ?: emptyList()

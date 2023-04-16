@@ -42,9 +42,9 @@ class ProductViewModel @Inject constructor(
         mutableSelectedUserProductsLiveData.value = mutableListOf()
     }
 
-    fun getAllProducts(onSuccess: () -> Unit, onError: () -> Unit) {
+    fun getAllProducts(token: String, onSuccess: () -> Unit, onError: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
-            val products = getAllProducts.get()
+            val products = getAllProducts.get(token = token)
             CoroutineScope(Dispatchers.Main).launch {
                 products?.let { mutableAllProductsLiveData.value = it }
                 if (products != null && products.isNotEmpty()) {
@@ -70,9 +70,9 @@ class ProductViewModel @Inject constructor(
         }
     }
 
-    fun getProductsWithCheck(onSuccess: () -> Unit, onError: () -> Unit) {
+    fun getProductsWithCheck(token: String, onSuccess: () -> Unit, onError: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
-            val allProductsAsync = async { getAllProducts.get() }
+            val allProductsAsync = async { getAllProducts.get(token = token) }
             val userProductsAsync = async { getUserProducts.get() }
             val allProducts = allProductsAsync.await()
             val userProducts = userProductsAsync.await()

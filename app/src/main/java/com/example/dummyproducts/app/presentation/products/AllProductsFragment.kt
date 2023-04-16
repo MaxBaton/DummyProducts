@@ -12,6 +12,7 @@ import com.example.dummyproducts.app.presentation.common.createWaitAlertDialog
 import com.example.dummyproducts.app.presentation.common.showShortToast
 import com.example.dummyproducts.app.presentation.products.logic.ActionAllProductsMenuMode
 import com.example.dummyproducts.app.presentation.products.viewmodel.ProductViewModel
+import com.example.dummyproducts.app.presentation.user.viewModel.UserViewModel
 import com.example.dummyproducts.databinding.FragmentAllProductsBinding
 import com.example.dummyproducts.databinding.ProductAllItemBinding
 import com.example.dummyproducts.domain.products.models.Product
@@ -24,6 +25,7 @@ import com.xwray.groupie.viewbinding.BindableItem
 class AllProductsFragment: Fragment() {
     private var binding: FragmentAllProductsBinding? = null
     private val productViewModel: ProductViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
     // For Recycler
     private val groupieAdapter = GroupieAdapter()
     private val section = Section()
@@ -43,6 +45,7 @@ class AllProductsFragment: Fragment() {
 
         with(binding ?: return) {
             productViewModel.getProductsWithCheck(
+                token = userViewModel.liveDataUser.value?.token ?: "",
                 onSuccess = {
                     progressBar.visibility = View.GONE
                 },
